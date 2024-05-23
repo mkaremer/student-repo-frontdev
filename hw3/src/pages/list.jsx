@@ -32,19 +32,39 @@ const GetCountries = () => {
 
     fetchCountries();
   }, []);
+
   return (
     <div className="bg-gray-100 p-5 md:p-14">
-      <ul className="list-disc pl-5">
+      <div className="flex flex-wrap gap-6">
         {countries.map((country) => (
-          <li key={country.id} className="mb-2">
-            <strong>{country.name}</strong>
-            <br />
-            Capital: {country.capital}
-            <br />
-            Population: {country.population}
-          </li>
+          <div
+            key={country.id}
+            className="bg-white shadow-md p-4 flex items-center w-full sm:w-1/2 md:w-1/3 lg:w-1/4"
+          >
+            {country.flag_png ? (
+              <img
+                src={country.flag_png}
+                alt={`Flag of ${country.name}`}
+                className="w-16 h-10 mr-4"
+              />
+            ) : (
+              <div className="w-16 h-10 mr-4 bg-gray-300 flex items-center justify-center">
+                <span className="text-sm text-gray-600">No Flag</span>
+              </div>
+            )}
+            <div>
+              <strong>{country.name || "Unknown Country"}</strong>
+              <br />
+              Capital: {country.capital || "Unknown"}
+              <br />
+              Population: {country.population?.toLocaleString() || "Unknown"}
+              <br />
+              GDP (in billions):{" "}
+              {country.gdp_billions?.toLocaleString() || "Unknown"}
+            </div>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };
@@ -52,8 +72,10 @@ const GetCountries = () => {
 const List = () => {
   return (
     <div className="flex h-screen">
-      <Navbar />
-      <div className="flex-grow p-8 bg-gray-100">
+      <div>
+        <Navbar />
+      </div>
+      <div className="flex-grow p-1 bg-gray-100">
         <Header />
         <GetCountries />
       </div>
