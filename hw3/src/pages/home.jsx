@@ -12,6 +12,12 @@ const Header = () => {
         South American countries. Navigate on our website to see list of
         contries in South America, their population, flags and more!
       </p>
+      <img
+        src="../public/South_America.svg.png"
+        alt="South America Map"
+        className="mt-8 mx-auto max-w-full"
+        style={{ maxWidth: "250px" }}
+      />
     </div>
   );
 };
