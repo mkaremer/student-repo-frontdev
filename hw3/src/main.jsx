@@ -1,3 +1,5 @@
+//
+
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -6,16 +8,16 @@ import Home from "./pages/home";
 import List from "./pages/list";
 import Population from "./pages/population";
 import CustomRoute from "./pages/customRoute";
-// import Navbar from "./components/navbar";
+import Error from "./pages/error";
 
 const Main = () => (
   <BrowserRouter>
-    {/* <Navbar /> */}
     <Routes>
-      <Route path="/" element={<Home />}></Route>
-      <Route path="/list" element={<List />}></Route>
-      <Route path="/population" element={<Population />}></Route>
-      <Route path="/customRoute" element={<CustomRoute />}></Route>
+      <Route path="/" element={<Home />} />
+      <Route path="/list" element={<List />} />
+      <Route path="/population" element={<Population />} />
+      <Route path="/customRoute" element={<CustomRoute />} />
+      <Route path="*" element={<Error />} />
     </Routes>
   </BrowserRouter>
 );
